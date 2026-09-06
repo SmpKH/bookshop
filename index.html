@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ស្វាគមន៍ - រៀនបន្ថែម Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --primary-light: #eef2ff;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kantumruy Pro', sans-serif;
+        }
+
+        body {
+            background-color: #e2e8f0;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Mobile Screen Container */
+        .mobile-container {
+            width: 100%;
+            max-width: 412px;
+            height: 100vh;
+            max-height: 844px;
+            background-color: var(--bg-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 413px) {
+            .mobile-container {
+                border-radius: 40px;
+                border: 12px solid #0f172a;
+            }
+        }
+
+        /* Top Greeting Section */
+        .welcome-header {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .welcome-logo {
+            width: 75px;
+            height: 75px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+            margin-bottom: 10px;
+            background-color: white;
+        }
+
+        .welcome-header h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .welcome-header p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* Shop List Container */
+        .shop-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .shop-list::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Shop Card Item */
+        .shop-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            color: var(--text-main);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            transition: all 0.25s ease;
+        }
+
+        .shop-card:not(.coming-soon):hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.12);
+        }
+
+        .shop-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .shop-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Icon Colors per Shop Type */
+        .shop-icon.book {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .shop-icon.soon {
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+        }
+
+        .shop-details h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .shop-details p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Action / Status Indicators */
+        .shop-action {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .coming-soon {
+            opacity: 0.75;
+            background-color: #fafafa;
+            cursor: default;
+        }
+
+        .badge-soon {
+            font-size: 0.68rem;
+            font-weight: 600;
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+            padding: 4px 8px;
+            border-radius: 6px;
+        }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            font-size: 0.73rem;
+            color: var(--text-muted);
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mobile-container">
+        <!-- Header Info -->
+        <div class="welcome-header">
+            <img src="/img/KavaLogo .png" alt="Logo" class="welcome-logo" onerror="this.style.display='none'">
+            <h2>រៀនបន្ថែម Store Hub</h2>
+            <p>ជ្រើសរើសប្រភេទហាងទំនិញដែលអ្នកចង់ស្វែងរក</p>
+        </div>
+
+        <!-- List of Shops -->
+        <div class="shop-list">
+            <!-- Active Shop: Books -->
+            <a href="bookshop.html" class="shop-card">
+                <div class="shop-info">
+                    <div class="shop-icon book">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div class="shop-details">
+                        <h4>រៀនបន្ថែម BooksShops</h4>
+                        <p>ហាងលក់សៀវភៅ និងប្រលោមលោក</p>
+                    </div>
+                </div>
+                <div class="shop-action">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <!-- Future Shop 2 (Coming Soon) -->
+            <div class="shop-card coming-soon">
+                <div class="shop-info">
+                    <div class="shop-icon soon">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="shop-details">
+                        <h4>សម្ភារៈសិក្សា & អេឡិចត្រូនិក</h4>
+                        <p>ឧបករណ៍ និងកាតាបសិក្សា</p>
+                    </div>
+                </div>
+                <span class="badge-soon">នឹងមានពេលក្រោយ</span>
+            </div>
+
+            <!-- Future Shop 3 (Coming Soon) -->
+            <div class="shop-card coming-soon">
+                <div class="shop-info">
+                    <div class="shop-icon soon">
+                        <i class="fa-solid fa-shirt"></i>
+                    </div>
+                    <div class="shop-details">
+                        <h4>សម្ភារៈប្រើប្រាស់ទូទៅ</h4>
+                        <p>ម៉ូដ និងសម្ភារៈផ្សេងៗ</p>
+                    </div>
+                </div>
+                <span class="badge-soon">នឹងមានពេលក្រោយ</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer-note">
+            &copy; 2026 រៀនបន្ថែម Ecosystem. All rights reserved.
+        </div>
+    </div>
+
+</body>
+</html>
